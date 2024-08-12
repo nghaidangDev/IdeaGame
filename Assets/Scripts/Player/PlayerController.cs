@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private LayerMask solidObjectsLayer;
+    [SerializeField] private LayerMask longGrassLayer;
 
     private bool isMoving;
     private Vector2 input;
@@ -60,6 +61,8 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         isMoving = false;
+
+        CheckForEnCounters();
     }
 
     //Kiểm tra xem có va chạm với solidObjects k
@@ -70,5 +73,16 @@ public class PlayerController : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    private void CheckForEnCounters()
+    {
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, longGrassLayer) != null)
+        {
+            if (Random.Range(1, 101) <= 10)
+            {
+                Debug.Log("Encounters a wild pokemon");
+            }
+        }
     }
 }
