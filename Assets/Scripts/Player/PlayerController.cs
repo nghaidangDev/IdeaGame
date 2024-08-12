@@ -5,9 +5,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
+    [SerializeField] private LayerMask solidObjectsLayer;
 
     private bool isMoving;
     private Vector2 input;
+
+    private Animator anim;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -21,13 +29,21 @@ public class PlayerController : MonoBehaviour
 
             if (input != Vector2.zero)
             {
+                anim.SetFloat("MoveX", input.x);
+                anim.SetFloat("MoveY", input.y);
+
                 var targetPos = transform.position;
                 targetPos.x += input.x;
                 targetPos.y += input.y;
 
-                StartCoroutine(Move(targetPos));
+                if (IsWalkable(targetPos))
+                {
+                    StartCoroutine(Move(targetPos));
+                }
             }
         }
+
+        anim.SetBool("isMoving", isMoving);
     }
 
     //Xử lý tuần tự
@@ -44,5 +60,15 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         isMoving = false;
+    }
+
+    //Kiểm tra xem có va chạm với solidObjects k
+    private bool IsWalkable(Vector3 targetPos)
+    {
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer) != null)
+        {
+            return false;
+        }
+        return true;
     }
 }
