@@ -26,6 +26,9 @@ public class PokemonBase : ScriptableObject  //Quản lý dữ liệu tĩnh
     [SerializeField] private int spDefence;
     [SerializeField] private int speed;
 
+    [SerializeField] private List<LearnableMove> learnableMoves;
+
+
     public string Name
     {
         get { return name; }
@@ -85,10 +88,35 @@ public class PokemonBase : ScriptableObject  //Quản lý dữ liệu tĩnh
     {
         get { return speed; }
     }
+
+    public List<LearnableMove> LearnableMoves
+    {
+        get { return learnableMoves; }
+    }
+
 }
+
+[System.Serializable]
+public class LearnableMove
+{
+    [SerializeField] private MoveBase moveBase;
+    [SerializeField] private int level;
+
+    public MoveBase Base
+    {
+        get { return moveBase; }
+    }
+
+    public int Level
+    {
+        get { return level; }
+    }
+}
+
 public enum PokemonTypes
 {
     None,
+    Normal,
     Fire,
     Water,
     Electric,

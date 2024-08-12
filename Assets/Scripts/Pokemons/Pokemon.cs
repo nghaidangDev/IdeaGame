@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +7,31 @@ public class Pokemon : MonoBehaviour
     PokemonBase _base;
     int level;
 
+    public int Hp { get; set; }
+
+    public List<Move> Moves { get; set; }
+
+
+    //khởi tạo một Pokémon với các đòn tấn công mà nó có thể học được ở cấp độ hiện tại, giới hạn tối đa là 4 đòn.
     public Pokemon (PokemonBase pBase, int pLevel)
     {
         _base = pBase;
         level = pLevel;
+        Hp = pBase.MaxHp;
+
+        Moves = new List<Move>();
+        foreach (var move in _base.LearnableMoves)
+        {
+            if (move.Level <= level)
+            {
+                Moves.Add(new Move(move.Base));
+            }
+
+            if (Moves.Count >= 4)
+            {
+                break;
+            }
+        }
     }
 
     public int Attack
