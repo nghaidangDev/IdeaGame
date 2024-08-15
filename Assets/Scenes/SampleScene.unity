@@ -2025,7 +2025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.010135, y: 13.500008}
+  m_AnchoredPosition: {x: -0.010131836, y: 13.500008}
   m_SizeDelta: {x: 210.89, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &476603991
@@ -2583,7 +2583,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0011907, y: 26.000015}
+  m_AnchoredPosition: {x: 0.0011901855, y: 26.000015}
   m_SizeDelta: {x: 210.91, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &677063785
@@ -2801,6 +2801,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   letterPerSeconds: 30
   dialogText: {fileID: 1320963490}
+  highlightedColor: {r: 0.2889355, g: 0.57491934, b: 0.9169811, a: 1}
+  actionSelector: {fileID: 1421069379}
+  moveSelector: {fileID: 41514701}
+  moveDetails: {fileID: 1589936746}
+  actionText:
+  - {fileID: 648600161}
+  - {fileID: 365958895}
+  moveText:
+  - {fileID: 7504462}
+  - {fileID: 1080439681}
+  - {fileID: 973523689}
+  - {fileID: 1174735326}
+  ppText: {fileID: 677063785}
+  typeText: {fileID: 476603991}
 --- !u!1 &786152326
 GameObject:
   m_ObjectHideFlags: 0
