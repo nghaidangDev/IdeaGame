@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8a0f6d5ad5d05468bd8f7b40beec5b, type: 3}
   m_Name: Growl
   m_EditorClassIdentifier: 
-  name: 
+  name: Growl
   description: 
-  type: 0
-  power: 0
-  accuracy: 0
-  pp: 0
+  type: 6
+  power: 45
+  accuracy: 100
+  pp: 20
