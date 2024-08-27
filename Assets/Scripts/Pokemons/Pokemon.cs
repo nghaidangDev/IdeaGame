@@ -56,7 +56,7 @@ public class Pokemon : MonoBehaviour
 
     public int Speed
     {
-        get { return Mathf.FloorToInt((Base.Speed * Level) / 100f) + 5; }
+        get { return Mathf.FloorToInt((Base.Speed * Level) / 100f) + 10; }
     }
 
     public int MaxHp
@@ -72,7 +72,7 @@ public class Pokemon : MonoBehaviour
         int damage = Mathf.FloorToInt(d * modifiers);
 
         Hp -= damage;
-        if (Hp > 0)
+        if (Hp < 0)
         {
             Hp = 0;
             return true;

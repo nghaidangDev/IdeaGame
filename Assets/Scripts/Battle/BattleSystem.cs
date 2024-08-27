@@ -84,7 +84,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        bool isFainted = playerUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+        bool isFainted = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);
         yield return playerHub.UpdateHP();
 
         if (isFainted)
