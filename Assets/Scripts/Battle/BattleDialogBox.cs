@@ -33,6 +33,7 @@ public class BattleDialogBox : MonoBehaviour
             dialogText.text += letter;
             yield return new WaitForSeconds(1f / letterPerSeconds);
         }
+        yield return new WaitForSeconds(1f);
     }
 
     public void EnableDialogBox(bool enable)
