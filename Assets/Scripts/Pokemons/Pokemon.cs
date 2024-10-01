@@ -2,10 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pokemon : MonoBehaviour
+[System.Serializable]
+public class Pokemon
 {
-    public PokemonBase Base { get; set; }
-    public int Level { get; set; }
+    [SerializeField] PokemonBase _base;
+    [SerializeField] int level;
+
+    public PokemonBase Base {
+        get
+        {
+            return _base;
+        }
+    }
+    public int Level {
+        get
+        {
+            return level;
+        }
+    }
 
     public int Hp { get; set; }
 
@@ -13,10 +27,8 @@ public class Pokemon : MonoBehaviour
 
 
     //khởi tạo một Pokémon với các đòn tấn công mà nó có thể học được ở cấp độ hiện tại, giới hạn tối đa là 4 đòn.
-    public Pokemon (PokemonBase pBase, int pLevel)
+    public void Init()
     {
-        Base = pBase;
-        Level = pLevel;
         Hp = MaxHp;
 
         Moves = new List<Move>();
@@ -80,10 +92,13 @@ public class Pokemon : MonoBehaviour
             Fainted = false
         };
 
+        float attack = (move.Base.IsSpecial) ? attacker.SpAttack : attacker.Attack;
+        float defence = (move.Base.IsSpecial) ? SpDefence : Defence;
+
 
         float modifiers = Random.Range(0.85f, 1f) * type * critical;
         float a = (2 * attacker.Level + 10) / 250f;
-        float d = a * move.Base.Power * ((float)attacker.Attack / Defence) + 2;
+        float d = a * move.Base.Power * ((float)attack / defence) + 2;
         int damage = Mathf.FloorToInt(d * modifiers);
 
         Hp -= damage;
